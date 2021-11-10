@@ -2,9 +2,9 @@ import { Action } from '@ngrx/store';
 
 export const LOGIN = '[Auth] Login';
 export const LOGOUT = '[Auth] Logout';
-export const AUTO_LOGIN = '[Auth] Auto Login'
-export const SOCKET_STATUS = '[Auth] SOCKET STATUS CONNECTED'
-export const SET_REALTIME_STATS_FLAG = "[Auth] Set real time stats flag";
+export const AUTO_LOGIN = '[Auth] Auto Login';
+export const SOCKET_STATUS = '[Auth] SOCKET STATUS CONNECTED';
+export const SET_REALTIME_STATS_FLAG = '[Auth] Set real time stats flag';
 
 export class Login implements Action {
   readonly type = LOGIN;

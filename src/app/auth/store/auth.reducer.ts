@@ -1,3 +1,4 @@
+/* eslint-disable prefer-arrow/prefer-arrow-functions */
 // tslint:disable-next-line: import-spacing
 import { User } from '../user.model';
 import * as AuthActions from './auth.actions';
@@ -52,7 +53,7 @@ export function authReducer(state = initialState, action: AuthActions.AuthAction
             user: userUpdated
           }
         };
-      } else { 
+      } else {
         return state;
       }
     default:
