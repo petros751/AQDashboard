@@ -23,6 +23,16 @@
           </ion-item>
         </ion-list> -->
       </ion-content>
+      <ion-footer *ngIf="appPages">
+        <ion-toolbar>
+          <ion-title class="ion-text-center">
+            <ion-text color="primary">Air Quality Panel</ion-text> v{{ version | date: "ddhhmm" }}
+          </ion-title>
+          <!-- <ion-button slot="end" *ngIf="update" (click)="reloadApp()" fill="clear" size="small">
+            <ion-icon slot="icon-only" color="dark" src="./assets/icons/refresh.svg"></ion-icon>
+          </ion-button> -->
+        </ion-toolbar>
+      </ion-footer>
     </ion-menu>
     <ion-router-outlet id="main-content"></ion-router-outlet>
   </ion-split-pane>
