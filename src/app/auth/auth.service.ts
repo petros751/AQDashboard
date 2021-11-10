@@ -1,3 +1,6 @@
+/* eslint-disable max-len */
+/* eslint-disable @typescript-eslint/member-ordering */
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { tap } from 'rxjs/operators';
@@ -59,7 +62,7 @@ export class AuthService {
               resData.user,
               resData.stores,
               false
-            ); 
+            );
           }
         }),
       );
@@ -99,7 +102,6 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
 
-  
 
   socketStatus(socketConnected: boolean) {
     this.store.dispatch(

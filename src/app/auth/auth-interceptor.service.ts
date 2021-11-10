@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/naming-convention */
 import { Injectable } from '@angular/core';
 import { HttpInterceptor, HttpRequest, HttpHandler, HttpParams, HttpHeaders } from '@angular/common/http';
 import { AuthService } from './auth.service';
@@ -12,9 +13,7 @@ export class AuthInterceptorService implements HttpInterceptor {
   intercept(req: HttpRequest<any>, next: HttpHandler) {
     return this.store.select('auth').pipe(
       take(1),
-      map(authState => {
-        return authState.user;
-      }),
+      map(authState => authState.user),
       exhaustMap(user => {
         if (!user) {
           return next.handle(req);

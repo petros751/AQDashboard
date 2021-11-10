@@ -1,17 +1,18 @@
-import { Component, OnInit } from "@angular/core";
-import { NgForm } from "@angular/forms";
-import { AuthService } from "../auth/auth.service";
-import { Router } from "@angular/router";
-import { Platform } from "@ionic/angular";
-import { SplashScreen } from "@ionic-native/splash-screen/ngx";
-import { StatusBar } from "@ionic-native/status-bar/ngx";
-import { AlertController } from "@ionic/angular";
-import { TranslateService } from "@ngx-translate/core";
+/* eslint-disable @typescript-eslint/naming-convention */
+import { Component, OnInit } from '@angular/core';
+import { NgForm } from '@angular/forms';
+import { AuthService } from '../auth/auth.service';
+import { Router } from '@angular/router';
+import { Platform } from '@ionic/angular';
+import { SplashScreen } from '@ionic-native/splash-screen/ngx';
+import { StatusBar } from '@ionic-native/status-bar/ngx';
+import { AlertController } from '@ionic/angular';
+// import { TranslateService } from '@ngx-translate/core';
 
 @Component({
-  selector: "app-auth",
-  templateUrl: "./auth.page.html",
-  styleUrls: ["auth.page.scss"]
+  selector: 'app-auth',
+  templateUrl: './auth.page.html',
+  styleUrls: ['auth.page.scss']
 })
 export class AuthPage implements OnInit {
   selectedLanguage: string;
@@ -25,7 +26,7 @@ export class AuthPage implements OnInit {
     private splashScreen: SplashScreen,
     private statusBar: StatusBar,
     public alertController: AlertController,
-    private translate: TranslateService
+    // private translate: TranslateService
   ) {}
 
   ngOnInit() {
@@ -42,9 +43,9 @@ export class AuthPage implements OnInit {
     this.authService.login(user_id, password).subscribe(
       resData => {
         if (resData.success) {
-          console.log("success");
+          console.log('success');
           this.isLoading = false;
-          this.router.navigate(["/home"]);
+          this.router.navigate(['/home']);
         } else {
           this.isLoading = false;
         //   this.modalAlert(resData.comment_id);
@@ -54,7 +55,7 @@ export class AuthPage implements OnInit {
       error => {
         this.isLoading = false;
         // this.modalAlert("problem_reaching_server");
-        console.log("problem_reaching_server (login) :", error);
+        console.log('problem_reaching_server (login) :', error);
       }
     );
     form.reset();

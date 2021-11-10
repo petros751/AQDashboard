@@ -7,4 +7,3 @@ export class User {
       private socketConnected: boolean
     ) {}
   }
-  
