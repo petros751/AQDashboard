@@ -8,7 +8,7 @@ export class AppComponent {
   public appPages = [
     { title: 'Map', url: '/map', icon: 'trash' },
     { title: 'Weather', url: '/weather', icon: 'mail' },
-    { title: 'Air Quality', url: '/aq', icon: 'paper-plane' },
+    { title: 'Air Quality', url: '/airQuality', icon: 'paper-plane' },
     { title: 'Alarms', url: '/alarms', icon: 'heart' },
     { title: 'Statistics', url: '/statistics', icon: 'warning' },
     { title: 'Admins', url: '/admins', icon: 'archive' },

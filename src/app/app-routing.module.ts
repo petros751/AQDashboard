@@ -23,7 +23,7 @@ const routes: Routes = [
     // canActivate: [AuthGuard]
   },
   {
-    path: 'air',
+    path: 'airQuality',
     component: AirQualityPage,
     // canActivate: [AuthGuard]
   },
