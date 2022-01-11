@@ -6,12 +6,17 @@ import { AirQualityPage } from './airQuality/airQuality.page';
 import { AlarmsPage } from './alarms/alarms.page';
 import { StatisticsPage } from './statistics/statistics.page';
 import { AdminsPage } from './admins/admins.page';
+import { AuthPage } from './auth/auth.page';
 
 const routes: Routes = [
   {
     path: '',
     redirectTo: 'auth',
     pathMatch: 'full'
+  },
+  {
+    path: 'auth',
+    component: AuthPage,
   },
   {
     path: 'map',
@@ -44,7 +49,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: false })
   ],
   exports: [RouterModule]
 })

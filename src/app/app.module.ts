@@ -7,7 +7,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { IonicModule, IonicRouteStrategy } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
-import { HttpClient, HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
+import { HttpClientModule, HTTP_INTERCEPTORS } from '@angular/common/http';
 import { StoreModule } from '@ngrx/store';
 import * as fromApp from './store/app.reducer';
 
@@ -20,6 +20,7 @@ import { AlarmsPage } from './alarms/alarms.page';
 import { MapPage } from './map/map.page';
 import { StatisticsPage } from './statistics/statistics.page';
 import { WeatherPage } from './weather/weather.page';
+import { AuthPage } from './auth/auth.page';
 
 @NgModule({
   declarations: [
@@ -28,7 +29,8 @@ import { WeatherPage } from './weather/weather.page';
     AlarmsPage,
     MapPage,
     StatisticsPage,
-    WeatherPage
+    WeatherPage,
+    AuthPage,
   ],
   entryComponents: [],
   imports: [
