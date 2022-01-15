@@ -7,6 +7,7 @@ import { AlarmsPage } from './alarms/alarms.page';
 import { StatisticsPage } from './statistics/statistics.page';
 import { AdminsPage } from './admins/admins.page';
 import { AuthPage } from './auth/auth.page';
+import { SettingsPage } from './settings/settings.page';
 
 const routes: Routes = [
   {
@@ -40,6 +41,10 @@ const routes: Routes = [
   {
     path: 'statistics',
     component: StatisticsPage,
+  },
+  {
+    path: 'settings',
+    component: SettingsPage,
   },
   {
     path: 'admins',

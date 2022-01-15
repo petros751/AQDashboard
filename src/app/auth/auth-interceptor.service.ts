@@ -16,14 +16,17 @@ export class AuthInterceptorService implements HttpInterceptor {
       map(authState => authState.user),
       exhaustMap(user => {
         if (!user) {
+          console.log('REQUEST: ', req);
           return next.handle(req);
         }
         const modifedReq = req.clone({
             headers: new HttpHeaders({
               'Content-Type': 'application/json',
-              Authorization: user.token
+              // Authorization: user.token,
+              'x-api-key': 'EdNrXnEdDo3JhFuxn4dVCaIXI03pFotQ6BScYGZK'
             })
         });
+        console.log('modifedReq: ', modifedReq);
         return next.handle(modifedReq);
       }));
 }

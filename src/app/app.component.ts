@@ -14,6 +14,7 @@ export class AppComponent {
     { title: 'Air Quality', url: '/airQuality', icon: 'paper-plane' },
     { title: 'Alarms', url: '/alarms', icon: 'warning' },
     { title: 'Statistics', url: '/statistics', icon: 'stats-chart' },
+    { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Admins', url: '/admins', icon: 'people' },
   ];
   constructor(

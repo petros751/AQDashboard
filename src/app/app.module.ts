@@ -20,7 +20,8 @@ import { AlarmsPage } from './alarms/alarms.page';
 import { MapPage } from './map/map.page';
 import { StatisticsPage } from './statistics/statistics.page';
 import { WeatherPage } from './weather/weather.page';
-import { AuthPage } from './auth/auth.page';
+import { SettingsPage } from './settings/settings.page';
+// import { AuthPage } from './auth/auth.page';
 
 @NgModule({
   declarations: [
@@ -30,7 +31,8 @@ import { AuthPage } from './auth/auth.page';
     MapPage,
     StatisticsPage,
     WeatherPage,
-    AuthPage,
+    SettingsPage,
+    // AuthPage,
   ],
   entryComponents: [],
   imports: [

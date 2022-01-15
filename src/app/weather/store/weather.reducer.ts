@@ -3,11 +3,11 @@ import * as WeatherActions from './weather.actions';
 import * as _ from 'lodash';
 
 export interface State {
-  statistics: Array<any>;
+  currentWeather: any;
 }
 
 const initialState: State = {
-  statistics: null
+  currentWeather: null
 };
 
 export function weatherReducer(
@@ -15,15 +15,10 @@ export function weatherReducer(
   action: WeatherActions.WeatherActions
 ) {
   switch (action.type) {
-    case WeatherActions.FETCH_CUSTOMERS_STATISTICS:
+    case WeatherActions.FETCH_CURRENT_WEATHER:
       return {
         ...state,
-        statistics: action.payload
-      };
-    case WeatherActions.CLEAR_CUSTOMERS_STATS:
-      return{
-        ...state,
-        statistics: null
+        currentWeather: action.payload
       };
     default:
       return state;
