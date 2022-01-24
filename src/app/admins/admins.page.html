@@ -1,21 +1,22 @@
-<ion-header [translucent]="true">
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>Admins Page</ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content [fullscreen]="true">
-    <ion-header collapse="condense">
-      <ion-toolbar>
-        <ion-title size="large">Admins</ion-title>
-      </ion-toolbar>
-    </ion-header>
-  
-    <div id="container">
-      <strong class="capitalize">Admins</strong>
-    </div>
-  </ion-content>
-  
+<ion-header>
+  <ion-toolbar class="logo-toolbar">
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+      <ion-title>Admins</ion-title>
+    </ion-buttons>
+    <ion-buttons slot="end">
+      <ion-button size='large' shape="round" fill="clear" (click)="addUser()">
+        <ion-icon name="add-circle-outline" size='large'></ion-icon>
+      </ion-button>
+    </ion-buttons>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <ion-grid>
+    <ion-row>
+    <ion-col>
+      <app-admin-list></app-admin-list>
+    </ion-col>
+  </ion-row>
+  </ion-grid>
+</ion-content>

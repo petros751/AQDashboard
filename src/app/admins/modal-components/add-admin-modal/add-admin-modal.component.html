@@ -1,0 +1,136 @@
+<ion-header>
+  <ion-toolbar>
+    <ion-buttons slot="end">
+      <ion-button (click)="modalCtrl.dismiss()">
+        <ion-icon name="close"></ion-icon>
+      </ion-button>
+    </ion-buttons>
+    <ion-title>Add admin</ion-title>
+  </ion-toolbar>
+</ion-header>
+<ion-content>
+  <form [formGroup]="newAdminForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-item>
+      <ion-label position="floating"
+        ><p>Admin id</p></ion-label
+      >
+      <ion-input formControlName="superadmin_id" [clearInput]="true" type="text" required [(ngModel)]="newUser.superadmin_id">
+      </ion-input>
+    </ion-item>
+    <!-- <span class="ion-padding" style="color: red;" *ngIf="isSubmitted && errorControl.superadmin_id.errors?.required">
+      {{admin-panel.wrnName}}
+    </span> -->
+    <!-- <span class="error ion-padding" style="color: red;" *ngIf="isSubmitted && errorControl.superadmin_id.errors?.minlength">
+      {{ admin-panel.wrnName2}}
+    </span> -->
+
+    <ion-item>
+      <ion-label position="floating"
+        ><p>Password</p></ion-label
+      >
+      <ion-input formControlName="password" [clearInput]="true" type="password" [(ngModel)]="newUser.password" required>
+      </ion-input>
+    </ion-item>
+    <!-- <span class="ion-padding" style="color: red;" *ngIf="isSubmitted && errorControl.password.errors?.required">
+      {{ admin-panel.wrnName}}
+    </span>
+    <span class="error ion-padding" style="color: red;" *ngIf="isSubmitted && errorControl.password.errors?.minlength">
+      {{ admin-panel.wrnName2}}
+    </span> -->
+
+    <ion-item>
+      <ion-label><p>{{admin-panel.all_permissions}}</p></ion-label>
+      <ion-toggle
+        formControlName="allPermissions"
+        slot="end"
+        [(ngModel)]="allPermissions"
+        (ionChange)="ionChangePermssions()"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-item [hidden]="allPermissions">
+      <ion-label><p>{{admin-panel.permissions}}</p></ion-label>
+      <ion-select
+        formControlName="permissions"
+        multiple="true"
+        [cancelText]="select_cancel"
+        [okText]="select_ok"
+        [(ngModel)]="newUser.permissions"
+        [interfaceOptions]="{ backdropDismiss: false }"
+      >
+        <ion-select-option value="reviews">{{ reviews.title}}</ion-select-option>
+        <ion-select-option value="customers">{{ customers.title}}</ion-select-option>
+        <ion-select-option value="orders">{{ orders.title  }}</ion-select-option>
+        <ion-select-option [disabled]="notSuperAdmin" value="admin-panel">{{ admin-panel.title}}</ion-select-option>
+        <ion-select-option value="charges">{{ charges.title}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span
+      class="ion-padding"
+      style="color: red;"
+      *ngIf="!allPermissions && isSubmitted && errorControl.permissions.errors?.required"
+    >
+      {{ admin-panel.wrnName }}
+    </span>
+
+    <ion-item>
+      <ion-label><p>{{ admin-panel.all_stores}}</p></ion-label>
+      <ion-toggle
+        formControlName="allStoresPermissions"
+        slot="end"
+        [(ngModel)]="allStoresPermissions"
+        (ionChange)="ionChangeStores()"
+      ></ion-toggle>
+    </ion-item>
+
+    <ion-item [hidden]="allStoresPermissions">
+      <ion-label><p>{{admin-panel.stores}}</p></ion-label>
+      <ion-select
+        formControlName="selectedStores"
+        multiple="true"
+        [cancelText]="select_cancel"
+        [okText]="select_ok"
+        [(ngModel)]="newUser.selectedStores"
+        [interfaceOptions]="{ backdropDismiss: false }"
+      >
+        <ion-select-option *ngFor="let store of allStores" value="{{store.store_id}}">{{store.store_name}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span
+      class="ion-padding"
+      style="color: red;"
+      *ngIf="!allPermissions && isSubmitted && errorControl.permissions.errors?.required"
+    >
+      {{ admin-panel.wrnName }}
+    </span>
+
+
+    <ion-item>
+      <ion-label
+        ><p>{{ admin-panel.language }}</p></ion-label
+      >
+      <ion-select
+        formControlName="language_code"
+        multiple="false"
+        [cancelText]="select_cancel"
+        [okText]="select_ok"
+        [(ngModel)]="newUser.language_code"
+        [interfaceOptions]="{ backdropDismiss: false }"
+        required
+      >
+        <ion-select-option value="en">{{ admin-panel.english}}</ion-select-option>
+        <ion-select-option value="el">{{ admin-panel.greek}}</ion-select-option>
+      </ion-select>
+    </ion-item>
+    <span class="ion-padding" style="color: red;" *ngIf="isSubmitted && errorControl.language_code.errors?.required">
+      {{ admin-panel.wrnName}}
+    </span>
+  </form>
+</ion-content>
+<ion-footer>
+  <form [formGroup]="newAdminForm" (ngSubmit)="submitForm()" novalidate>
+    <ion-toolbar>
+      <ion-button expand="block" type="submit" fill="solid">{{add}} </ion-button>
+    </ion-toolbar>
+  </form>
+</ion-footer>

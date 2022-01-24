@@ -1,0 +1,7 @@
+<div class="ion-padding" style="width: 100%" align="center" *ngIf="!admins">
+    <ion-spinner></ion-spinner>
+  </div>
+  <ion-list *ngIf="admins && admins.length">
+    <app-admin *ngFor="let adminEl of admins" [admin]="adminEl">
+    </app-admin>
+  </ion-list>

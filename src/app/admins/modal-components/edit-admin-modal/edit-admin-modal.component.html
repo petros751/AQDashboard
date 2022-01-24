@@ -1,0 +1,145 @@
+<ion-header>
+    <ion-toolbar>
+      <ion-buttons slot="end">
+        <ion-button (click)="modalCtrl.dismiss()">
+          <ion-icon name="close"></ion-icon>
+        </ion-button>
+      </ion-buttons>
+      <ion-title>{{ "admin-panel.modal_edit_title" | translate }}</ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content>
+    <ion-grid>
+      <ion-row *ngIf="!editAdmin" style="text-align: center;">
+        <ion-col class="ion-padding">
+          <ion-spinner></ion-spinner>
+        </ion-col>
+      </ion-row>
+      <ion-row *ngIf="editAdmin">
+        <ion-col>
+          <form [formGroup]="editAdminForm" (ngSubmit)="submitForm()" novalidate>
+            <ion-item>
+              <ion-label position="floating" color="primary"><p>{{ "admin-panel.user_id" | translate }}</p></ion-label>
+              <ion-input
+                formControlName="superadmin_id"
+                [clearInput]="true"
+                type="text"
+                [(ngModel)]="editAdmin.superadmin_id"
+                disabled="true"
+              ></ion-input>
+            </ion-item>
+  
+            <ion-item>
+              <ion-row style="width: 100%;" class="ion-padding ion-justify-content-center ion-align-items-center">
+                <ion-col size-xs="12" size-sm="10" class="ion-text-center">
+                  <ion-button
+                    [disabled]="loadingCredentials"
+                    type="button"
+                    style="white-space: normal;"
+                    fill="solid"
+                    (click)="newPasswordSmsSend()"
+                    class="min_fonts"
+                  >
+                    {{ "admin-panel.send_user_credentials" | translate }}
+                  </ion-button>
+                </ion-col>
+                <ion-col size-xs="12" size-sm="2" class="ion-text-center">
+                  <ion-button
+                    [disabled]="loadingCredentials"
+                    type="button"
+                    fill="clear"
+                    color="dark"
+                    (click)="newPasswordPopUp()"
+                  >
+                    <ion-icon name="key"></ion-icon>
+                  </ion-button>
+                </ion-col>
+              </ion-row>
+            </ion-item>
+
+            <ion-item>
+              <ion-label><p>{{ "admin-panel.all_permissions" | translate }}</p></ion-label>
+              <ion-toggle
+                formControlName="allPermissions"
+                slot="end"
+                [(ngModel)]="allPermissions"
+                (ionChange)="ionChangePermssions()"
+              ></ion-toggle>
+            </ion-item>
+            
+            <ion-item [hidden]="allPermissions">
+              <ion-label><p>{{ "admin-panel.permissions" | translate }}</p></ion-label>
+              <ion-select
+                formControlName="permissions"
+                multiple="true"
+                [cancelText]="'select_cancel' | translate"
+                [okText]="'select_ok' | translate"
+                [(ngModel)]="editAdmin.permissions"
+                [interfaceOptions]="{ backdropDismiss: false }"
+              >
+                <ion-select-option value="reviews">{{ "reviews.title" | translate }}</ion-select-option>
+                <ion-select-option value="customers">{{ "customers.title" | translate }}</ion-select-option>
+                <ion-select-option value="orders">{{ "orders.title" | translate }}</ion-select-option>
+                <ion-select-option [disabled]="notSuperAdmin" value="admin-panel">{{ "admin-panel.title" | translate }}</ion-select-option>
+                <ion-select-option value="charges">{{ "charges.title" | translate }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+
+            <ion-item>
+              <ion-label><p>{{ "admin-panel.all_stores" | translate }}</p></ion-label>
+              <ion-toggle
+                formControlName="allStoresPermissions"
+                slot="end"
+                [(ngModel)]="allStoresPermissions"
+                (ionChange)="ionChangeStores()"
+              ></ion-toggle>
+            </ion-item>
+
+            <ion-item [hidden]="allStoresPermissions" *ngIf="editAdmin.stores">
+              <ion-label><p>{{ "admin-panel.stores" | translate }}</p></ion-label>
+              <ion-select
+                formControlName="stores"
+                multiple="true"
+                [cancelText]="'select_cancel' | translate"
+                [okText]="'select_ok' | translate"
+                [(ngModel)]="editAdmin.stores"
+                [interfaceOptions]="{ backdropDismiss: false }"
+              >
+                <ion-select-option *ngFor="let store of allStores" value="{{store.store_id}}">{{store.store_name}}</ion-select-option>
+              </ion-select>
+            </ion-item>
+            <span
+              class="ion-padding"
+              style="color: red;"
+              *ngIf="!allPermissions && isSubmitted && errorControl.permissions.errors?.required"
+            >
+              {{ "admin-panel.wrnName" | translate }}
+            </span>
+  
+            <ion-item>
+              <ion-label><p>{{ "admin-panel.language" | translate }}</p></ion-label>
+              <ion-select
+                formControlName="language_code"
+                multiple="false"
+                [cancelText]="'select_cancel' | translate"
+                [okText]="'select_ok' | translate"
+                [(ngModel)]="editAdmin.language_code"
+                [interfaceOptions]="{ backdropDismiss: false }"
+              >
+                <ion-select-option value="en">{{ "admin-panel.english" | translate }}</ion-select-option>
+                <ion-select-option value="el">{{ "admin-panel.greek" | translate }}</ion-select-option>
+              </ion-select>
+            </ion-item>
+          </form>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </ion-content>
+  <ion-footer>
+    <form [formGroup]="editAdminForm" (ngSubmit)="submitForm()" novalidate>
+      <ion-toolbar>
+        <ion-button expand="block" type="submit" fill="solid">{{ "save" | translate }} </ion-button>
+      </ion-toolbar>
+    </form>
+  </ion-footer>
+  
