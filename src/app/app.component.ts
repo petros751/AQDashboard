@@ -17,6 +17,7 @@ export class AppComponent {
     { title: 'Settings', url: '/settings', icon: 'settings' },
     { title: 'Admins', url: '/admins', icon: 'people' },
   ];
+  public isAuthenticated: boolean;
   constructor(
     private platform: Platform,
     private splashScreen: SplashScreen,

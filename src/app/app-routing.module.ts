@@ -8,6 +8,8 @@ import { StatisticsPage } from './statistics/statistics.page';
 import { AdminsPage } from './admins/admins.page';
 import { AuthPage } from './auth/auth.page';
 import { SettingsPage } from './settings/settings.page';
+import { AuthGuard } from './auth/auth.guard';
+import { RegistrationPage } from './registration/registration.page';
 
 const routes: Routes = [
   {
@@ -20,41 +22,49 @@ const routes: Routes = [
     component: AuthPage,
   },
   {
+    path: 'registration',
+    component: RegistrationPage,
+  },
+  {
     path: 'map',
-    component: MapPage
+    component: MapPage,
+    canActivate: [AuthGuard]
   },
   {
     path: 'weather',
     component: WeatherPage,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'airQuality',
     component: AirQualityPage,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'alarms',
     component: AlarmsPage,
-    // canActivate: [AuthGuard]
+    canActivate: [AuthGuard]
   },
   {
     path: 'statistics',
     component: StatisticsPage,
+    canActivate: [AuthGuard]
   },
   {
     path: 'settings',
     component: SettingsPage,
+    canActivate: [AuthGuard]
   },
   {
     path: 'admins',
     component: AdminsPage,
+    canActivate: [AuthGuard]
   },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: false })
+    RouterModule.forRoot(routes, { preloadingStrategy: PreloadAllModules, useHash: true })
   ],
   exports: [RouterModule]
 })

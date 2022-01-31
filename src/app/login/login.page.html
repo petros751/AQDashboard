@@ -1,15 +1,5 @@
-<ion-header>
-    <ion-toolbar>
-      <ion-title class="ion-text-center">
-        <img class="header-logo" src="/assets/icon/favicon.png">
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
   <!-- <app-registration *ngIf="signUpFormVisible"> </app-registration> -->
-  <ion-content>
-    <app-login></app-login>
-  </ion-content>
-  <!-- <ion-content style="height: 100%" *ngIf="!signUpFormVisible">
+  <ion-content style="height: 100%" *ngIf="!signUpFormVisible">
     <ion-grid *ngIf="isLoading" style="text-align: center;">
       <ion-row>
         <ion-col class="ion-padding">
@@ -42,11 +32,4 @@
         </form>
       </ion-row>
     </ion-grid>
-  </ion-content> -->
-  <ion-footer>
-    <ion-toolbar class="ion-text-right">
-      <ion-title class="ion-text-center">&copy; {{year | date:'yyy'}} Air Quality Panel
-        <!-- {{ version | date : 'ddhhmm' }} -->
-      </ion-title>
-    </ion-toolbar>
-  </ion-footer>
+  </ion-content>

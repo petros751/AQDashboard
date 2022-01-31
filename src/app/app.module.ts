@@ -23,7 +23,9 @@ import { WeatherPage } from './weather/weather.page';
 import { SettingsPage } from './settings/settings.page';
 import { AdminListPage } from './admins/admin-list/admin-list.component';
 import { AdminPage } from './admins/admin-list/admin/admin.component';
-// import { AuthPage } from './auth/auth.page';
+import { AuthPage } from './auth/auth.page';
+import { RegistrationPage } from './registration/registration.page';
+import { LoginPage }from './login/login.page';
 
 import { AddAdminModalComponent } from './admins/modal-components/add-admin-modal/add-admin-modal.component';
 import { EditAdminModalComponent } from './admins/modal-components/edit-admin-modal/edit-admin-modal.component';
@@ -42,7 +44,9 @@ import { EditAdminModalComponent } from './admins/modal-components/edit-admin-mo
     AdminPage,
     EditAdminModalComponent,
     AddAdminModalComponent,
-    // AuthPage,
+    AuthPage,
+    RegistrationPage,
+    LoginPage,
   ],
   entryComponents: [
     EditAdminModalComponent,

@@ -68,6 +68,33 @@ export class AuthService {
       );
   }
 
+  signup(superadmin_id: string, password: string) {
+    return this.http
+      .post<AuthResponseData>(
+        'https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDhTm9nlI3TV99kU1p1My-1k87E6qvuRiw',
+        {
+          email: superadmin_id,
+          password,
+          returnSecureToken: true
+        }
+      )
+      .pipe(
+        tap(resData => {
+          if (resData && resData.success) {
+            console.log(resData);
+            console.log(resData.user);
+            this.handleAuth(
+              resData.token,
+              +resData.expiresIn,
+              resData.user,
+              resData.stores,
+              false
+            );
+          }
+        }),
+      );
+  }
+
   private handleAuth(token: string, expiresIn: number, user: any, stores: any, socketConnected: boolean) {
     const expirationDate = new Date(new Date().getTime() + expiresIn * 1000);
     const newUser = new User(token, expirationDate, user, stores, socketConnected);
@@ -102,15 +129,6 @@ export class AuthService {
     this.tokenExpirationTimer = null;
   }
 
-
-  socketStatus(socketConnected: boolean) {
-    this.store.dispatch(
-      new AuthActions.SocketStatus({
-        socketConnected
-      })
-    );
-  }
-
   autoLogin() {
     if (localStorage.getItem('userData')) {
       try {
@@ -123,7 +141,7 @@ export class AuthService {
         this.expirationDate = null;
         localStorage.clear();
       }
-      User
+      // User
       if (this.token && this.expirationDate) {
         this.loadUserOnState(this.token, this.expirationDate, this.user, this.stores, true); //true, because this is for the first time the app opens and we do not care what it is saved from the past
         return this.http

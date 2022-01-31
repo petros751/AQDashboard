@@ -22,12 +22,33 @@ export class FetchUsers {
   lastEvaluatedKey: any;
 }
 
+export class SignUpUser {
+  email: string;
+  password: string;
+}
+
 @Injectable({ providedIn: 'root' })
 export class DataStorageService {
   constructor(
     private http: HttpClient,
     private store: Store<fromApp.AppState>
   ) { }
+
+
+  signUp() {
+    return this.http
+    .post<SignUpUser>(' https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyDhTm9nlI3TV99kU1p1My-1k87E6qvuRiw', {})
+    .pipe(retry(1))
+    .pipe(
+      tap((resData) => {
+        console.log(resData);
+        // if (resData && resData.success) {
+        //   console.log(resData);
+        //   this.store.dispatch(new WeatehrActions.FetchCurrentWeather(resData.currentWeather));
+        // }
+      })
+    );
+  }
 
 
   fetchCurrentWeather() {
