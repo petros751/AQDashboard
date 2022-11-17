@@ -1,15 +1,11 @@
 <ion-header>
     <ion-toolbar>
       <ion-title class="ion-text-center">
-        <img class="header-logo" src="/assets/icon/favicon.png">
+        <img alt='logo' class="header-logo" src="/assets/icon/favicon.png">
       </ion-title>
     </ion-toolbar>
   </ion-header>
-  <!-- <app-registration *ngIf="signUpFormVisible"> </app-registration> -->
-  <ion-content>
-    <app-login></app-login>
-  </ion-content>
-  <!-- <ion-content style="height: 100%" *ngIf="!signUpFormVisible">
+  <ion-content style="height: 100%" *ngIf="!signUpFormVisible">
     <ion-grid *ngIf="isLoading" style="text-align: center;">
       <ion-row>
         <ion-col class="ion-padding">
@@ -20,7 +16,7 @@
     <ion-grid style="height: 100%;">
       <ion-row style="height: 100%;" class="ion-justify-content-center ion-align-items-center">
         <form #form="ngForm" (ngSubmit)="onSubmit(form)" *ngIf="!isLoading" id="loginForm">
-          <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
+           <ion-col class="ion-align-self-center" size-md="6" size-lg="5" size-xs="12">
             <div class="ion-padding">
               <ion-item>
                 <ion-input name="user_id" type="text" placeholder="Username" ngModel required (keyup.enter)="onSubmit(form)"></ion-input>
@@ -29,24 +25,22 @@
                 <ion-input name="password" type="password" placeholder="Password" ngModel required (keyup.enter)="onSubmit(form)"></ion-input>
               </ion-item>
             </div>
-            <div class="ion-padding">
-              <ion-button size="large" type="submit" [disabled]="form.invalid" shape="round" expand="block">
+           <div class="ion-padding">
+              <ion-button size="large" type="submit" shape="round" expand="block">
                 Login
               </ion-button>
-              <span class="divider line one-line">or</span>
-              <ion-button size="large" type="button" shape="round" (click)="onSignUp()" expand="block">
-                Sign Up
-              </ion-button>
+            </div>
+            <div style="text-align: center;">
+              <ion-label class="password" (click)="remindPassword()">Register</ion-label>
             </div>
           </ion-col>
-        </form>
+        </form> 
       </ion-row>
     </ion-grid>
-  </ion-content> -->
+  </ion-content>
   <ion-footer>
     <ion-toolbar class="ion-text-right">
       <ion-title class="ion-text-center">&copy; {{year | date:'yyy'}} Air Quality Panel
-        <!-- {{ version | date : 'ddhhmm' }} -->
       </ion-title>
     </ion-toolbar>
   </ion-footer>
